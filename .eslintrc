@@ -1,0 +1,12 @@
+{
+  "env": {
+    "node": 1,
+    "browser": 1
+  },
+  "globals": {
+    "exampleGlobalVariable": true
+  },
+  "extends": ["eslint:recommended", "plugin:node/recommended"],
+  "rules": {},
+  "plugins": []
+}

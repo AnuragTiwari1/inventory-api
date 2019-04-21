@@ -1,0 +1,12 @@
+[
+    {
+        "email": "anuragweb145@gmail.com",
+        "password": "1",
+        "role": "super admin"
+    },
+    {
+        "email": "anu@mail.com",
+        "password": "1",
+        "role": "super admin"
+    }
+]

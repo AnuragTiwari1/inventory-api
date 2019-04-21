@@ -1,0 +1,14 @@
+[
+    {
+        "name": "super admin",
+        "rank": 0
+    },
+    {
+        "name": "supervisor",
+        "rank": 1
+    },
+    {
+        "name": "sub-supervisor",
+        "rank": 2
+    }
+]
