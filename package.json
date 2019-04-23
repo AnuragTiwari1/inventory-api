@@ -7,14 +7,9 @@
         "start": "nodemon server",
         "dev": "env-cmd .env nodemon server"
     },
-    "keywords": [
-        "Node.js",
-        "Express",
-        "JWT",
-        "Token",
-        "based",
-        "Authentication"
-    ],
+    "engines": {
+        "node": "11.10.1"
+    },
     "author": "Anurag Tiwari",
     "license": "ISC",
     "dependencies": {

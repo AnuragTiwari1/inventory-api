@@ -7,8 +7,6 @@ const reset = require ('./routes/reset.routes');
 
 mongoose.connect ('mongodb://localhost/jwtauth');
 
-const PORT = 3000;
-
 app.use (bodyParser.urlencoded ({extended: false}));
 app.use (bodyParser.json ());
 
@@ -21,6 +19,4 @@ app.get ('/checking', function (req, res) {
 app.use ('/user', user);
 app.use ('/reset', reset);
 
-app.listen (PORT, function () {
-  console.log ('Server is running on Port', PORT);
-});
+app.listen (process.env.PORT);
