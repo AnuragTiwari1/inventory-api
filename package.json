@@ -4,7 +4,7 @@
     "description": "Node js Express JWT Authentication Tutorial",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server",
+        "start": "node server",
         "dev": "env-cmd .env nodemon server"
     },
     "engines": {
