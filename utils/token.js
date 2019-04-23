@@ -23,4 +23,13 @@ module.exports = {
       }
     });
   },
+  sign: (email, _id) => {
+    return jwt.sign (
+      {email, _id},
+      new Buffer (process.env.JWTsecret, 'base64'),
+      {
+        expiresIn: '2h',
+      }
+    );
+  },
 };

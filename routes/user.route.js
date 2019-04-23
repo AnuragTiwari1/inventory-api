@@ -2,9 +2,8 @@ const express = require ('express');
 const router = express.Router ();
 const mongoose = require ('mongoose');
 const bcrypt = require ('bcryptjs');
-const jwt = require ('jsonwebtoken');
 const User = require ('../models/user.modal');
-
+const JWT = require ('../utils/token');
 router.post ('/signup', function (req, res) {
   User.findOne ({email: req.body.email})
     .exec ()
@@ -23,15 +22,14 @@ router.post ('/signup', function (req, res) {
           });
           user
             .save ()
-            .then (function (result) {
-              console.log (result);
+            .then (function () {
               res.status (200).json ({
                 success: 'New user has been created',
               });
             })
             .catch (error => {
               res.status (500).json ({
-                error: err,
+                error: error,
               });
             });
         }
@@ -50,16 +48,8 @@ router.post ('/signin', function (req, res) {
           });
         }
         if (result) {
-          const JWTToken = jwt.sign (
-            {
-              email: user.email,
-              _id: user._id,
-            },
-            new Buffer (process.env.JWTsecret, 'base64'),
-            {
-              expiresIn: '2h',
-            }
-          );
+          const JWTToken = JWT.sign (user.email, user._id);
+
           return res.status (200).json ({
             success: 'Welcome to the JWT Auth',
             token: JWTToken,
@@ -70,9 +60,10 @@ router.post ('/signin', function (req, res) {
         });
       });
     })
-    .catch (error => {
+    .catch (() => {
       res.status (402).json ({
         error: 'Please signup first',
+        status,
       });
     });
 });
