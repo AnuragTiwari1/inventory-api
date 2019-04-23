@@ -19,4 +19,4 @@ app.get ('/checking', function (req, res) {
 app.use ('/user', user);
 app.use ('/reset', reset);
 
-app.listen (process.env.PORT);
+app.listen (3000, () => {});

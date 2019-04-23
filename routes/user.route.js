@@ -7,34 +7,44 @@ const JWT = require ('../utils/token');
 router.post ('/signup', function (req, res) {
   User.findOne ({email: req.body.email})
     .exec ()
-    .then (() => res.status (402).json ({message: 'User already exits'}))
-    .catch (() => {
-      bcrypt.hash (req.body.password, 10, function (err, hash) {
-        if (err) {
-          return res.status (500).json ({
-            error: err,
-          });
-        } else {
-          const user = new User ({
-            _id: new mongoose.Types.ObjectId (),
-            email: req.body.email,
-            password: hash,
-          });
-          user
-            .save ()
-            .then (function () {
-              res.status (200).json ({
-                success: 'New user has been created',
-              });
-            })
-            .catch (error => {
-              res.status (500).json ({
-                error: error,
-              });
+    .then (user => {
+      if (user) return res.status (402).json ({message: 'User already exits'});
+      else {
+        bcrypt.hash (req.body.password, 10, function (err, hash) {
+          if (err) {
+            return res.status (500).json ({
+              success: false,
+              error: err,
             });
-        }
-      });
-    });
+          } else {
+            const user = new User ({
+              _id: new mongoose.Types.ObjectId (),
+              email: req.body.email,
+              password: hash,
+            });
+            user
+              .save ()
+              .then (function () {
+                res.status (200).json ({
+                  success: true,
+                  message: 'New User has been created',
+                });
+              })
+              .catch (error => {
+                res.status (500).json ({
+                  error: error,
+                });
+              });
+          }
+        });
+      }
+    })
+    .catch (error =>
+      res.status (500).json ({
+        success: false,
+        error: error,
+      })
+    );
 });
 
 router.post ('/signin', function (req, res) {
