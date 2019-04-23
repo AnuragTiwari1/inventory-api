@@ -5,7 +5,7 @@ const user = require ('./routes/user.route');
 const mongoose = require ('mongoose');
 const reset = require ('./routes/reset.routes');
 
-mongoose.connect ('mongodb://localhost/jwtauth');
+mongoose.connect (process.env.MONGODB_URI);
 
 app.use (bodyParser.urlencoded ({extended: false}));
 app.use (bodyParser.json ());
