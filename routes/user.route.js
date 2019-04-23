@@ -63,7 +63,6 @@ router.post ('/signin', function (req, res) {
     .catch (() => {
       res.status (402).json ({
         error: 'Please signup first',
-        status,
       });
     });
 });
