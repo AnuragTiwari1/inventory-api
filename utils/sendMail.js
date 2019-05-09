@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
 const OAuth2 = google.auth.OAuth2
 
-module.exports=async (toEmail)=>{
+module.exports=async (toEmail,token)=>{
     const oauth2Client = new OAuth2(
         process.env.MAIL_CLIENT_ID,
         process.env.MAIL_CLIENT_SECRET,
@@ -31,9 +31,9 @@ module.exports=async (toEmail)=>{
     const mailOptions = {
         from: process.env.MAIL_USER,
         to: `${toEmail}`,
-        subject: 'Node.js Email with Secure OAuth',
+        subject: 'Young Inventory App Invitation',
         generateTextFromHTML: true,
-        html: '<b>test</b>',
+        html: `<b>Download the app and open the link inside it com.young://${token}</b>`,
     }
     
     smtpTransport.sendMail(mailOptions, (error, response) => {

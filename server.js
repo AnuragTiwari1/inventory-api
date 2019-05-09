@@ -5,8 +5,6 @@ const user = require ('./routes/user.route');
 const mongoose = require ('mongoose');
 const reset = require ('./routes/reset.routes');
 
-
-
 mongoose.connect (process.env.MONGODB_URI);
 const port = process.env.PORT || 3000;
 app.use (bodyParser.urlencoded ({extended: false}));
