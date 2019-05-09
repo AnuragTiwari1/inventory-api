@@ -16,16 +16,16 @@ module.exports = {
               });
             } else {
               // if everything is good, save to request for use in other routes
-              res (true);
+              res (decoded);
             }
           }
         );
       }
     });
   },
-  sign: (email, _id) => {
+  sign: (email, _id,role) => {
     return jwt.sign (
-      {email, _id},
+      {email, _id,role},
       new Buffer (process.env.JWTsecret, 'base64'),
       {
         expiresIn: '2h',
