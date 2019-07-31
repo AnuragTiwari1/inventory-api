@@ -18,6 +18,6 @@ app.get('/checking', function(req, res) {
 
 app.use('/user', user)
 app.use('/reset', reset)
-app.use('/product',product)
+// app.use('/product',product)
 
 app.listen(port, () => console.log('server started on port', port))

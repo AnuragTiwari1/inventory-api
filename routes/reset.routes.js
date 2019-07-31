@@ -8,7 +8,7 @@ const UserModal = require ('../models/user.modal');
 const bcrypt = require ('bcryptjs');
 const tokenMiddleware = require ('../middleware/token.middleware');
 // eslint-disable-next-line node/no-unsupported-features/es-syntax
-router.get ('/roles', tokenMiddleware.checkToken, async (req, res) => {
+router.get ('/roles',  async (req, res) => {
   let success = false;
   let resMessage;
   RoleModel.deleteMany ({}).exec ();
@@ -35,7 +35,7 @@ router.get ('/roles', tokenMiddleware.checkToken, async (req, res) => {
 });
 
 // eslint-disable-next-line node/no-unsupported-features/es-syntax
-router.get ('/user', tokenMiddleware.checkToken, async (req, res) => {
+router.get ('/user',  async (req, res) => {
   UserModal.deleteMany ({}).exec ();
   users
     .map (({email, password, role}) => {
