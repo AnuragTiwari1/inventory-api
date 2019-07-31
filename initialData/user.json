@@ -8,5 +8,10 @@
         "email": "anu@mail.com",
         "password": "1",
         "role": "super admin"
+    },
+    {
+        "email": "sumit@mail.com",
+        "password": "sumit12345",
+        "role": "super admin"
     }
 ]
