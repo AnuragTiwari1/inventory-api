@@ -46,7 +46,7 @@ router.post('/add', Token.checkToken ,async (req, res) => {
             })
         }
         else
-        return JSON.status(401).json({
+        return res.status(401).json({
           success:false,
           message:'operation not permitted. Cannot invite higher rank'
         })
